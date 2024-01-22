@@ -1,8 +1,10 @@
-package es.iescarrillo.tickes_cag;
+package es.iescarrillo.tickes_cag.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import es.iescarrillo.tickes_cag.R;
 
 public class MainActivity extends AppCompatActivity {
 
