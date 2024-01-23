@@ -15,6 +15,18 @@
         android:theme="@style/Theme.TICKES_CAG"
         tools:targetApi="31">
         <activity
+            android:name=".activities.EditDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.DetailsDetailsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.AddTicketDetails"
+            android:exported="false" />
+        <activity
+            android:name=".activities.EditTicketActivity"
+            android:exported="false" />
+        <activity
             android:name=".activities.AddTicketActivity"
             android:exported="false" />
         <activity

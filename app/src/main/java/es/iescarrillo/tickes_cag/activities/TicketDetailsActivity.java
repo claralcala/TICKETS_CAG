@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -92,6 +93,64 @@ public class TicketDetailsActivity extends AppCompatActivity {
 
             }
         });
+
+
+        lvDetails.setOnItemClickListener((parent, view, position, id) -> {
+            DetailsTicket detail = (DetailsTicket) parent.getItemAtPosition(position);
+            Intent details = new Intent(this, DetailsDetailsActivity.class);
+
+            details.putExtra("detail", detail);
+            startActivity(details);
+
+
+        });
+
+
+        btnDelete.setOnClickListener(v -> {
+            Call deleteTicket = apiService.deleteTicket(t.getId());
+
+            deleteTicket.enqueue(new Callback() {
+                @Override
+                public void onResponse(Call call, Response response) {
+                    if (response.isSuccessful()){
+                        Toast toast = Toast.makeText(getApplicationContext(), "Ticket borrado", Toast.LENGTH_SHORT);
+
+                        toast.show();
+                    }
+                }
+
+                @Override
+                public void onFailure(Call call, Throwable t) {
+
+                }
+            });
+
+            Intent goBack = new Intent(this, MainActivity.class);
+            startActivity(goBack);
+
+        });
+
+
+        btnBack.setOnClickListener(v -> {
+            Intent back = new Intent(this, MainActivity.class);
+            startActivity(back);
+        });
+
+
+        btnEdit.setOnClickListener(v -> {
+            Intent edit = new Intent(this, EditTicketActivity.class);
+            edit.putExtra("ticket", t);
+            startActivity(edit);
+        });
+
+
+        btnAdd.setOnClickListener(v -> {
+            Intent edit = new Intent(this, AddTicketDetails.class);
+            edit.putExtra("ticket", t);
+            startActivity(edit);
+        });
+
+
 
 
     }

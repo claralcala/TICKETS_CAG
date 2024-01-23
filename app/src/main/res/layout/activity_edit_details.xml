@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.AddTicketActivity">
-
+    tools:context=".activities.EditDetailsActivity">
 
     <LinearLayout
         android:id="@+id/linearLayout3"
@@ -28,7 +27,7 @@
             android:layout_marginBottom="40dp"
             android:background="#104A98"
             android:gravity="center"
-            android:text="AÑADIR TICKET"
+            android:text="EDITAR DETALLES: "
             android:textColor="#EAEEF2"
             android:textSize="30dp" />
 
@@ -38,9 +37,18 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:ems="10"
-            android:hint="Precio total ticket"
+            android:hint="Precio: "
             android:inputType="text" />
 
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:ems="10"
+            android:hint="Descripción: "
+            android:inputType="text" />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -49,7 +57,7 @@
 
 
             <Button
-                android:id="@+id/btnAddTicket"
+                android:id="@+id/btnAddDetails"
                 android:layout_width="25dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="5dp"
@@ -57,7 +65,7 @@
                 android:layout_weight="1"
                 android:backgroundTint="#2196F3"
 
-                android:text="Añadir" />
+                android:text="Editar" />
 
             <Button
                 android:id="@+id/btnBack"
@@ -70,4 +78,5 @@
                 android:text="Volver" />
         </LinearLayout>
     </LinearLayout>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
