@@ -2,11 +2,15 @@ package es.iescarrillo.tickes_cag.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
     private Ticket t;
 
-    private EditText etAmount;
+
 
     private Button btnAdd;
 
@@ -40,7 +44,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         lvTickets=findViewById(R.id.lvTickets);
-        etAmount=findViewById(R.id.etAmount);
         btnAdd=findViewById(R.id.btnAdd);
 
         tickets=new ArrayList<>();
@@ -69,6 +72,23 @@ public class MainActivity extends AppCompatActivity {
             public void onFailure(Call call, Throwable t) {
 
             }
+        });
+
+        lvTickets.setOnItemClickListener((parent, view, position, id) -> {
+            t = (Ticket) parent.getItemAtPosition(position);
+            Intent details = new Intent(this, TicketDetailsActivity.class);
+
+            details.putExtra("ticket", t);
+            startActivity(details);
+
+
+        });
+
+        btnAdd.setOnClickListener(v -> {
+            Intent add = new Intent(this, AddTicketActivity.class);
+            startActivity(add);
+
+
         });
 
 

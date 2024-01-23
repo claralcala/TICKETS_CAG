@@ -4,6 +4,7 @@ import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
+import java.util.List;
 
 public class Ticket implements Serializable {
 
@@ -18,6 +19,11 @@ public class Ticket implements Serializable {
     @SerializedName("id")
     @Expose
     private Integer id;
+
+
+    @SerializedName("detailTickets")
+    @Expose
+    private List<DetailsTicket> detailsTicket;
 
     public Ticket(){
 

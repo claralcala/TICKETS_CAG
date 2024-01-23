@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class TicketAPIClient {
 
-    private static final String BASE_URL = "https://goldenraceapi.onrender.com/golden-race/api/";
+    private static final String BASE_URL = "https://goldenraceapi.onrender.com/golden-race/";
 
     private static Retrofit retrofit = null;
 
