@@ -43,8 +43,8 @@ public class EditDetailsActivity extends AppCompatActivity {
         btnBack=findViewById(R.id.btnBack);
 
 
-        etAmount.setText(dt.getAmount().toString());
-        etDescription.setText(dt.getDescription().toString());
+       etAmount.setText(dt.getAmount().toString());
+       etDescription.setText(dt.getDescription().toString());
 
         TicketAPIService apiService = TicketAPIClient.getClient().create(TicketAPIService.class);
 

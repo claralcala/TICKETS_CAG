@@ -102,6 +102,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
             DetailsTicket detail = (DetailsTicket) parent.getItemAtPosition(position);
             Intent details = new Intent(this, DetailsDetailsActivity.class);
 
+            detail.setTicket(t);
             details.putExtra("detail", detail);
             startActivity(details);
 
