@@ -35,6 +35,8 @@ public class TicketDetailsActivity extends AppCompatActivity {
 
     private DetailsTicketAdapter detailsAdapter;
 
+    private TicketAPIService apiService;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,7 +72,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
         detailsAdapter=new DetailsTicketAdapter(getApplicationContext(), details);
 
 
-        TicketAPIService apiService = TicketAPIClient.getClient().create(TicketAPIService.class);
+         apiService = TicketAPIClient.getClient().create(TicketAPIService.class);
 
         Call callDetails = apiService.getDetails(t.getId());
 
@@ -85,6 +87,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
                     }
 
                     lvDetails.setAdapter(detailsAdapter);
+                    calculateTotalAmount();
                 }
             }
 
@@ -153,5 +156,34 @@ public class TicketDetailsActivity extends AppCompatActivity {
 
 
 
+    }
+
+    private void calculateTotalAmount() {
+        double newAmount = 0.0;
+        for (DetailsTicket dt : details) {
+            newAmount += dt.getAmount();
+        }
+        t.setTotalAmount(newAmount);
+        tvAmount.setText("Precio total: " + t.getTotalAmount().toString());
+
+        Call updateAmount = apiService.updateTicket(t.getId(), t);
+
+        updateAmount.enqueue(new Callback() {
+            @Override
+            public void onResponse(Call call, Response response) {
+                if(response.isSuccessful()){
+
+                    Toast toast = Toast.makeText(getApplicationContext(), "Precio total actualizado", Toast.LENGTH_SHORT);
+
+                    toast.show();
+
+                }
+            }
+
+            @Override
+            public void onFailure(Call call, Throwable t) {
+
+            }
+        });
     }
 }
