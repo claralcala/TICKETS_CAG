@@ -161,6 +161,9 @@ public class TicketDetailsActivity extends AppCompatActivity {
 
     private void calculateTotalAmount() {
         double newAmount = 0.0;
+        if (!details.isEmpty()) {
+
+
         for (DetailsTicket dt : details) {
             newAmount += dt.getAmount();
         }
@@ -172,7 +175,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
         updateAmount.enqueue(new Callback() {
             @Override
             public void onResponse(Call call, Response response) {
-                if(response.isSuccessful()){
+                if (response.isSuccessful()) {
 
                     Toast toast = Toast.makeText(getApplicationContext(), "Precio total actualizado", Toast.LENGTH_SHORT);
 
@@ -186,5 +189,7 @@ public class TicketDetailsActivity extends AppCompatActivity {
 
             }
         });
+
+    }
     }
 }
